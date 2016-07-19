@@ -10,19 +10,20 @@ import java.util.List;
 public class Field {
     private List<List<Cell>> field;
 
-    public Field(){
+    public Field() {
 
     }
 
-    public List<List<Cell>> getField(){
+    public List<List<Cell>> getField() {
         return field;
     }
-    protected void setEmptyField(){
+
+    protected void setEmptyField() {
         field = Arrays.asList(
-                Arrays.asList(null,null,null,null),
-                Arrays.asList(null,null,null,null),
-                Arrays.asList(null,null,null,null),
-                Arrays.asList(null,null,null,null));
+                Arrays.asList(null, null, null, null),
+                Arrays.asList(null, null, null, null),
+                Arrays.asList(null, null, null, null),
+                Arrays.asList(null, null, null, null));
     }
 
 }

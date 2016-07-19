@@ -28,4 +28,10 @@ public class FieldTest {
                 is(field.getField().get(3))));
 
     }
+
+    @Test
+    public void setTwoRandomDigitsAtStartOfGame() throws Exception {
+
+
+    }
 }
