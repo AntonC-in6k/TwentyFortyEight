@@ -1,6 +1,5 @@
 package twentyfortyeight.model;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -21,10 +20,10 @@ public class Field {
 
     protected void setEmptyField() {
         field = Arrays.asList(
-                Arrays.asList(null, null, null, null),
-                Arrays.asList(null, null, null, null),
-                Arrays.asList(null, null, null, null),
-                Arrays.asList(null, null, null, null));
+                Arrays.asList(cell, cell, cell, cell),
+                Arrays.asList(cell, cell, cell, cell),
+                Arrays.asList(cell, cell, cell, cell),
+                Arrays.asList(cell, cell, cell, cell));
     }
 
     protected void setDigitToRandomCell(){
@@ -33,7 +32,7 @@ public class Field {
         setEmptyField();
         while (!foundEmptyCell) {
             List<Integer> indexOfCell = Arrays.asList(randomCell.nextInt(4), randomCell.nextInt(4));
-            if (field.get(indexOfCell.get(0)).get(indexOfCell.get(1))==null){
+            if (field.get(indexOfCell.get(0)).get(indexOfCell.get(1)).getCellStatus()){
                 cell.setRandomValue();
                 field.get(indexOfCell.get(0)).set(indexOfCell.get(1),cell);
                 foundEmptyCell=true;
