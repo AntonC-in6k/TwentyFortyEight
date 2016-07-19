@@ -33,4 +33,15 @@ public class CellTest {
         }
         assertTrue(values.contains(4));
     }
+
+    @Test
+    public void randomReturnTwo() throws Exception {
+        Cell cell = new Cell();
+        List<Integer> values = new ArrayList(100);
+        for (int i=0;i<=100;i++){
+            cell.setRandomValue();
+            values.add(cell.getCell());
+        }
+        assertTrue(values.contains(2));
+    }
 }
