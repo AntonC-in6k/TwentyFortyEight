@@ -37,16 +37,18 @@ public class Cell {
         value = value * 2;
     }
 
-    protected void setValueTwo() {
-        value = 2;
+    protected void setValue(int value) {
+        this.value = value;
+        setNotEmpty();
     }
 
-    public void setToEmpty() {
+    private void setToEmpty() {
         cellEmpty = true;
     }
 
     public void resetValue() {
         value = null;
+        setToEmpty();
     }
 
     private void setNotEmpty() {

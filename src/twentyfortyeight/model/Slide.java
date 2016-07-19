@@ -5,17 +5,17 @@ import java.util.List;
 /**
  * Created by employee on 7/19/16.
  */
-public abstract class Drag {
+public abstract class Slide {
 
     protected List<List<Cell>> field;
 
-    public Drag(List<List<Cell>> field) {
+    public Slide(List<List<Cell>> field) {
         this.field = field;
     }
 
     public void move() {
         for (int i = 0; i < 4; i++) {
-            moveInLine(2);
+            moveInLine(i);
         }
     }
 

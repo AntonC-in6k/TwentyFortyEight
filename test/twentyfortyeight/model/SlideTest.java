@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by employee on 7/19/16.
  */
-public class DragTest {
+public class SlideTest {
     List<List<Cell>> field;
 
     public void setup() {
@@ -26,13 +26,22 @@ public class DragTest {
     }
 
     @Test
-    public void addTwoDigits() throws Exception {
+    public void tryAddTwoDigitsInLine() throws Exception {
         setup();
-        field.get(2).get(2).setValueTwo();
-        field.get(2).get(3).setValueTwo();
-        RightSlide drag = new RightSlide(field);
-        drag.move();
-        assertThat(drag.getField().get(2).get(3).getValue(), is(4));
+        field.get(2).get(2).setValue(2);
+        field.get(2).get(3).setValue(2);
+        RightSlide slide = new RightSlide(field);
+        slide.move();
+        assertThat(slide.getField().get(2).get(3).getValue(), is(4));
+    }
+
+    @Test
+    public void pushDigitToBorder() throws Exception {
+        setup();
+        field.get(2).get(2).setValue(2);
+        RightSlide slide = new RightSlide(field);
+        slide.move();
+        assertThat(slide.getField().get(2).get(3).getValue(), is(2));
     }
 
 
