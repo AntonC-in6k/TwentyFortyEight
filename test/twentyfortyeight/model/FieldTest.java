@@ -30,8 +30,14 @@ public class FieldTest {
     }
 
     @Test
-    public void setTwoRandomDigitsAtStartOfGame() throws Exception {
-
-
+    public void setRandomDigitToCell() throws Exception {
+        Field field = new Field();
+        field.setDigitToRandomCell();
+        List<Integer> emptyLine = Arrays.asList(null, null, null, null);
+        assertThat(emptyLine, anyOf(
+                not(field.getField().get(0)),
+                not(field.getField().get(1)),
+                not(field.getField().get(2)),
+                not(field.getField().get(3))));
     }
 }
