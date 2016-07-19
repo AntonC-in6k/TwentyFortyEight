@@ -1,5 +1,6 @@
 package twentyfortyeight.model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -11,32 +12,42 @@ public class Field {
     private List<List<Cell>> field;
     private Cell cell;
     public Field() {
-        cell= new Cell();
+        setEmptyField();
     }
 
     public List<List<Cell>> getField() {
         return field;
     }
 
-    protected void setEmptyField() {
+    public void setEmptyField() {
         field = Arrays.asList(
-                Arrays.asList(cell, cell, cell, cell),
-                Arrays.asList(cell, cell, cell, cell),
-                Arrays.asList(cell, cell, cell, cell),
-                Arrays.asList(cell, cell, cell, cell));
+                Arrays.asList(new Cell(), new Cell(), new Cell(), new Cell()),
+                Arrays.asList(new Cell(), new Cell(), new Cell(), new Cell()),
+                Arrays.asList(new Cell(), new Cell(), new Cell(), new Cell()),
+                Arrays.asList(new Cell(), new Cell(), new Cell(), new Cell()));
     }
 
     public void setDigitToRandomCell(){
-        Random randomCell = new Random();
-        boolean foundEmptyCell=false;
-        setEmptyField();
-        while (!foundEmptyCell) {
-            List<Integer> indexOfCell = Arrays.asList(randomCell.nextInt(4), randomCell.nextInt(4));
-            if (field.get(indexOfCell.get(0)).get(indexOfCell.get(1)).getCellStatus()){
-                cell.setRandomValue();
-                field.get(indexOfCell.get(0)).set(indexOfCell.get(1),cell);
-                foundEmptyCell=true;
+        Cell cell = chooseEmptyCell(foundEmptyCell());
+        cell.setRandomValue();
+    }
+
+    private List<Cell> foundEmptyCell(){
+        List <Cell> result = new ArrayList<>();
+        for(int i=0;i<4;i++){
+            for (int j=0;j<4;j++){
+                if (field.get(i).get(j).getCellStatus()){
+                    result.add(field.get(i).get(j));
+                }
             }
         }
+        return result;
     }
+
+    private Cell chooseEmptyCell(List<Cell> freeCells){
+        Random randomCell = new Random();
+        Cell cell = freeCells.get(randomCell.nextInt(freeCells.size()));
+        return cell;
+    }
+
 }

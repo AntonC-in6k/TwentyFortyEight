@@ -9,6 +9,7 @@ public class Game {
 
     public Field startGame() {
         Field field = new Field();
+        field.setEmptyField();
         field.setDigitToRandomCell();
         field.setDigitToRandomCell();
         return field;

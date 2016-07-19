@@ -1,9 +1,11 @@
 package twentyfortyeight.model;
 
+import org.junit.Before;
 import org.junit.Test;
 import sun.invoke.empty.Empty;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,29 +18,44 @@ import static org.junit.Assert.assertTrue;
  */
 public class FieldTest {
 
+    private List<Cell> testCells;
+
+    public void setTestCells(Field field){
+        testCells = new ArrayList<>(16);
+        testCells.addAll(field.getField().get(0));
+        testCells.addAll(field.getField().get(1));
+        testCells.addAll(field.getField().get(2));
+        testCells.addAll(field.getField().get(3));
+    }
     @Test
     public void fieldISEmptyInTheBeginning() throws Exception {
         Field field = new Field();
         field.setEmptyField();
-        List<Integer> emptyLine = Arrays.asList(null, null, null, null);
-        assertThat(emptyLine, allOf(
-                is(field.getField().get(0)),
-                is(field.getField().get(1)),
-                is(field.getField().get(2)),
-                is(field.getField().get(3))));
-
+        setTestCells(field);
+        int counter=0;
+        for (Cell cell:
+             testCells) {
+            if (!cell.getCellStatus()){
+                counter++;
+            }
+        }
+        assertThat(counter, is(0));
     }
 
     @Test
     public void setRandomDigitToCell() throws Exception {
         Field field = new Field();
+        field.setEmptyField();
         field.setDigitToRandomCell();
-        List<Integer> emptyLine = Arrays.asList(null, null, null, null);
-        assertThat(emptyLine, anyOf(
-                not(field.getField().get(0)),
-                not(field.getField().get(1)),
-                not(field.getField().get(2)),
-                not(field.getField().get(3))));
+        setTestCells(field);
+        int counter=0;
+        for (Cell cell:
+                testCells) {
+            if (!cell.getCellStatus()){
+                counter++;
+            }
+        }
+        assertThat(counter, is(1));
     }
 
 

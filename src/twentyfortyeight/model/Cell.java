@@ -13,6 +13,7 @@ public class Cell {
         cellEmpty=true;
     }
 
+
     public Integer getValue() {
         return value;
     }
