@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by employee on 7/19/16.
  */
-public class SlideTest {
+public class RightSlideTest {
     List<List<Cell>> field;
 
     public void setup() {
