@@ -14,6 +14,9 @@ public class Field {
 
     }
 
+    public List<List<Cell>> getField(){
+        return field;
+    }
     protected void setEmptyField(){
         field = Arrays.asList(
                 Arrays.asList(null,null,null,null),

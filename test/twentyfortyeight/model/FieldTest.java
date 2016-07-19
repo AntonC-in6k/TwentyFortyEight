@@ -1,15 +1,31 @@
 package twentyfortyeight.model;
 
 import org.junit.Test;
+import sun.invoke.empty.Empty;
 
 
-import static org.hamcrest.CoreMatchers.anyOf;
-import static org.hamcrest.CoreMatchers.is;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by employee on 7/19/16.
  */
 public class FieldTest {
 
+    @Test
+    public void fieldISEmptyInTheBeginning() throws Exception {
+        Field field = new Field();
+        field.setEmptyField();
+        List<Integer> emptyLine = Arrays.asList(null, null, null, null);
+        assertThat(emptyLine, allOf(
+                is(field.getField().get(0)),
+                is(field.getField().get(1)),
+                is(field.getField().get(2)),
+                is(field.getField().get(3))));
+
+    }
 }
