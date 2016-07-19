@@ -6,9 +6,10 @@ import java.util.Random;
  * Created by employee on 7/19/16.
  */
 public class Cell {
-    private int cell;
+    private Integer cell;
 
-    public int getCell() {
+
+    public Integer getCell() {
         return cell;
     }
 

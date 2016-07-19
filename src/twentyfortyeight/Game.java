@@ -9,7 +9,6 @@ public class Game {
 
     public Field startGame() {
         Field field = new Field();
-
         return field;
     }
 }

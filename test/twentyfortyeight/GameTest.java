@@ -19,4 +19,5 @@ public class GameTest {
         Game game = new Game();
         assertTrue(game.startGame() instanceof Field);
     }
+
 }
