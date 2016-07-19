@@ -11,34 +11,47 @@ public class RightSlide extends Slide {
         super(field);
     }
 
+    @Override
     protected void moveInLine(int index) {
         for (int i = 2; i >= 0; i--) {
-            if (field.get(index).get(i).getValue() == null) {
-                break;
+            if (field.get(index).get(i).getValue() != null) {
+                slideLine(index, i);
             }
-
-            for (int j = i+1; j < 4; j++) {
-                if (field.get(index).get(j).getCellStatus()){
-                    field.get(index).get(j).setValue(
-                            field.get(index).get(i).getValue());
-                    field.get(index).get(i).resetValue();
-                }
-            }
-
-            if (field.get(index).get(i).getValue() == field.get(index).get(i + 1).getValue()) {
-                addTwoDigits(index, i);
-            }
-
         }
-
     }
 
-    private void swapCells() {
-
+    @Override
+    protected void slideLine(int index, int i) {
+        for (int j = i + 1; j < 4; j++) {
+            if (field.get(index).get(j).getCellStatus()) {
+                field.get(index).get(j).setValue(
+                        field.get(index).get(j - 1).getValue());
+                field.get(index).get(j - 1).resetValue();
+            }
+        }
     }
 
-    protected void addTwoDigits(int row, int column) {
+    @Override
+    protected void addInLine(int index) {
+        for (int i = 2; i >= 0; i--) {
+            if (field.get(index).get(i).getValue() != null) {
+                addDigits(index, i);
+            }
+        }
+    }
+
+    @Override
+    protected void addDigits(int index, int i) {
+        if (field.get(index).get(i).getValue() ==
+                field.get(index).get(i + 1).getValue()) {
+            addTwoNearDigits(index, i);
+        }
+    }
+
+    @Override
+    protected void addTwoNearDigits(int row, int column) {
         field.get(row).get(column + 1).increaseValue();
         field.get(row).get(column).resetValue();
     }
+
 }
