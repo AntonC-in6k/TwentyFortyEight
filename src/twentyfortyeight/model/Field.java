@@ -11,6 +11,7 @@ import java.util.Random;
 public class Field {
     private List<List<Cell>> field;
     private Cell cell;
+
     public Field() {
         setEmptyField();
     }
@@ -27,16 +28,16 @@ public class Field {
                 Arrays.asList(new Cell(), new Cell(), new Cell(), new Cell()));
     }
 
-    public void setDigitToRandomCell(){
+    public void setDigitToRandomCell() {
         Cell cell = chooseEmptyCell(foundEmptyCell());
         cell.setRandomValue();
     }
 
-    private List<Cell> foundEmptyCell(){
-        List <Cell> result = new ArrayList<>();
-        for(int i=0;i<4;i++){
-            for (int j=0;j<4;j++){
-                if (field.get(i).get(j).getCellStatus()){
+    private List<Cell> foundEmptyCell() {
+        List<Cell> result = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (field.get(i).get(j).getCellStatus()) {
                     result.add(field.get(i).get(j));
                 }
             }
@@ -44,7 +45,7 @@ public class Field {
         return result;
     }
 
-    private Cell chooseEmptyCell(List<Cell> freeCells){
+    private Cell chooseEmptyCell(List<Cell> freeCells) {
         Random randomCell = new Random();
         Cell cell = freeCells.get(randomCell.nextInt(freeCells.size()));
         return cell;

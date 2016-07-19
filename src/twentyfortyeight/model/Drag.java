@@ -9,12 +9,12 @@ public abstract class Drag {
 
     protected List<List<Cell>> field;
 
-    public Drag(List<List<Cell>> field){
-        this.field=field;
+    public Drag(List<List<Cell>> field) {
+        this.field = field;
     }
 
     public void move() {
-        for (int i=0;i<4;i++){
+        for (int i = 0; i < 4; i++) {
             moveInLine(2);
         }
     }
@@ -22,7 +22,7 @@ public abstract class Drag {
     protected abstract void moveInLine(int index);
 
 
-    public List<List<Cell>> getField(){
+    public List<List<Cell>> getField() {
         return field;
     }
 }

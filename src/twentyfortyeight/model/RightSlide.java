@@ -11,11 +11,24 @@ public class RightSlide extends Drag {
         super(field);
     }
 
-    protected void moveInLine(int index){
-        if(field.get(index).get(2).getValue()==field.get(index).get(3).getValue()){
-            field.get(index).get(3).increaseValue();
-            field.get(index).get(2).resetValue();
-            field.get(index).get(2).setToEmpty();
+    protected void moveInLine(int index) {
+        for (int i = 2; i >= 0; i--) {
+            if (field.get(index).get(i).getValue() == null) {
+                break;
+            }
+            if (field.get(index).get(i).getValue() == field.get(index).get(i + 1).getValue()) {
+                addTwoDigits(index, i);
+            }
+            for (int j = i; j < 4; j++) {
+
+            }
         }
+
+    }
+
+    protected void addTwoDigits(int row, int column) {
+        field.get(row).get(column + 1).increaseValue();
+        field.get(row).get(column).resetValue();
+        field.get(row).get(column).setToEmpty();
     }
 }

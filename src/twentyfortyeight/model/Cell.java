@@ -9,8 +9,8 @@ public class Cell {
     private Integer value;
     private boolean cellEmpty;
 
-    public Cell(){
-        cellEmpty=true;
+    public Cell() {
+        cellEmpty = true;
     }
 
 
@@ -18,7 +18,7 @@ public class Cell {
         return value;
     }
 
-    public boolean getCellStatus(){
+    public boolean getCellStatus() {
         return cellEmpty;
     }
 
@@ -33,22 +33,23 @@ public class Cell {
         setNotEmpty();
     }
 
-    public void increaseValue(){
-        value=value*2;
+    public void increaseValue() {
+        value = value * 2;
     }
 
-    protected void setValueTwo(){
-        value=2;
+    protected void setValueTwo() {
+        value = 2;
     }
 
-    public void setToEmpty(){
-        cellEmpty=true;
+    public void setToEmpty() {
+        cellEmpty = true;
     }
 
-    public void resetValue(){
-        value=null;
+    public void resetValue() {
+        value = null;
     }
-    private void setNotEmpty(){
-        cellEmpty =false;
+
+    private void setNotEmpty() {
+        cellEmpty = false;
     }
 }
