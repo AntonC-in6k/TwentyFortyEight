@@ -39,4 +39,17 @@ public class CommandsHandlerTest {
         CommandsHandler commandHandler = new CommandsHandler();
         assertThat(commandHandler.handle("d"), is(MOVE_RIGHT));
     }
+
+    @Test
+    public void rightCommandOnEPress() throws Exception {
+        CommandsHandler commandHandler = new CommandsHandler();
+        assertThat(commandHandler.handle("e"), is(EXIT));
+    }
+
+    @Test
+    public void wrongCommandPress() throws Exception {
+        CommandsHandler commandHandler = new CommandsHandler();
+        assertThat(commandHandler.handle("h"), is(ERROR));
+    }
+
 }

@@ -26,7 +26,7 @@ public class Field {
                 Arrays.asList(cell, cell, cell, cell));
     }
 
-    protected void setDigitToRandomCell(){
+    public void setDigitToRandomCell(){
         Random randomCell = new Random();
         boolean foundEmptyCell=false;
         setEmptyField();
