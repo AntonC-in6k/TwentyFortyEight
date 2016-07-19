@@ -5,11 +5,8 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.anyOf;
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Created by employee on 7/19/16.
@@ -26,7 +23,7 @@ public class RightSlideTest {
     }
 
     @Test
-    public void pushDigitToBorder() throws Exception {
+    public void pushDigitsToBorder() throws Exception {
         setup();
         field.get(2).get(2).setValue(2);
         RightSlide slide = new RightSlide(field);
@@ -45,7 +42,7 @@ public class RightSlideTest {
     }
 
     @Test
-    public void pushDigitToBorderAndAddThem() throws Exception {
+    public void pushDigitsToBorderAndAddThem() throws Exception {
         setup();
         field.get(2).get(0).setValue(2);
         field.get(2).get(2).setValue(2);

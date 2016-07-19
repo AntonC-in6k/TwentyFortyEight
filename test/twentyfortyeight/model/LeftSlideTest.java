@@ -23,7 +23,7 @@ public class LeftSlideTest {
     }
 
     @Test
-    public void pushDigitToBorder() throws Exception {
+    public void pushDigitsToBorder() throws Exception {
         setup();
         field.get(2).get(2).setValue(2);
         LeftSlide slide = new LeftSlide(field);
@@ -42,7 +42,7 @@ public class LeftSlideTest {
     }
 
     @Test
-    public void pushDigitToBorderAndAddThem() throws Exception {
+    public void pushDigitsToBorderAndAddThem() throws Exception {
         setup();
         field.get(2).get(0).setValue(2);
         field.get(2).get(2).setValue(2);
