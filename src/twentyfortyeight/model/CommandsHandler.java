@@ -1,6 +1,5 @@
 package twentyfortyeight.model;
 
-import java.io.IOException;
 
 import static twentyfortyeight.model.Commands.*;
 
@@ -9,11 +8,11 @@ import static twentyfortyeight.model.Commands.*;
  */
 public class CommandsHandler {
 
-    public Commands handle(String command) throws IOException {
+    public Commands handle(String command) {
         return chooseCommand(command);
     }
 
-    private Commands chooseCommand(String command) throws IOException {
+    private Commands chooseCommand(String command) {
         switch (command) {
             case "d":
                 return MOVE_RIGHT;
