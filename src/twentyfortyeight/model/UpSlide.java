@@ -14,7 +14,7 @@ public class UpSlide extends Slide {
     @Override
     protected void moveInLine(int index) {
         for (int i = 1; i < 4; i++) {
-            if (field.get(i).get(index).getValue() != null) {
+            if (field.get(i).get(index).getValue() != 0) {
                 slideLine(index, i);
             }
         }
@@ -34,7 +34,7 @@ public class UpSlide extends Slide {
     @Override
     protected void addInLine(int index) {
         for (int i = 1; i < 4; i++) {
-            if (field.get(i).get(index).getValue() != null) {
+            if (field.get(i).get(index).getValue() != 0) {
                 addDigits(index, i);
             }
         }

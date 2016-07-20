@@ -27,7 +27,7 @@ public class CellTest {
     public void randomReturnFour() throws Exception {
         Cell cell = new Cell();
         List<Integer> values = new ArrayList(100);
-        for (int i=0;i<=100;i++){
+        for (int i = 0; i <= 100; i++) {
             cell.setRandomValue();
             values.add(cell.getValue());
         }
@@ -38,7 +38,7 @@ public class CellTest {
     public void randomReturnTwo() throws Exception {
         Cell cell = new Cell();
         List<Integer> values = new ArrayList(100);
-        for (int i=0;i<=100;i++){
+        for (int i = 0; i <= 100; i++) {
             cell.setRandomValue();
             values.add(cell.getValue());
         }

@@ -10,10 +10,23 @@ import java.util.Random;
  */
 public class Field {
     private List<List<Cell>> field;
-    private Cell cell;
+    private CellSelector cellSelector;
 
-    public Field() {
+    public Field(CellSelector cellSelector) {
+        this.cellSelector = cellSelector;
         setEmptyField();
+    }
+
+    public Field(CellSelector cellSelector,String field) {
+        this.cellSelector = cellSelector;
+        setEmptyField();
+        for (int i = 0; i < 4; i++) {
+            String row = field.split("\\n")[i];
+            for (int j = 0; j < 4; j++) {
+                this.field.get(i).set(j,
+                        new Cell(Integer.parseInt(row.split(",")[j].trim())));
+            }
+        }
     }
 
     public List<List<Cell>> getField() {
@@ -29,8 +42,12 @@ public class Field {
     }
 
     public void setDigitToRandomCell() {
-        Cell cell = chooseEmptyCell(foundEmptyCell());
-        cell.setRandomValue();
+        Cell cell = selectCell(foundEmptyCell());
+        cell.setValue(cell.setRandomValue());
+    }
+
+    public Cell selectCell(List<Cell> cells){
+       return cellSelector.selectEmptyCell(cells);
     }
 
     private List<Cell> foundEmptyCell() {
@@ -43,12 +60,6 @@ public class Field {
             }
         }
         return result;
-    }
-
-    private Cell chooseEmptyCell(List<Cell> freeCells) {
-        Random randomCell = new Random();
-        Cell cell = freeCells.get(randomCell.nextInt(freeCells.size()));
-        return cell;
     }
 
 }

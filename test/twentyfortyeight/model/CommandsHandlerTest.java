@@ -1,14 +1,9 @@
 package twentyfortyeight.model;
 
 import org.junit.Test;
-import java.util.Arrays;
-import java.util.List;
 
-import static org.hamcrest.CoreMatchers.anyOf;
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 import static twentyfortyeight.model.Commands.*;
 
 /**

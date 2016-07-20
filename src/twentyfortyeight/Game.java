@@ -1,5 +1,7 @@
 package twentyfortyeight;
 
+import twentyfortyeight.model.CellSelector;
+import twentyfortyeight.model.CellSelectorImpl;
 import twentyfortyeight.model.Field;
 
 /**
@@ -7,11 +9,32 @@ import twentyfortyeight.model.Field;
  */
 public class Game {
 
-    public Field startGame() {
-        Field field = new Field();
-        field.setEmptyField();
-        field.setDigitToRandomCell();
-        field.setDigitToRandomCell();
-        return field;
+    private Field gameField;
+    private CellSelector cellSelector;
+
+    public Game(){
+        cellSelector = new CellSelectorImpl();
     }
+
+    public Game(CellSelector cellSelector){
+        this.cellSelector = cellSelector;
+    }
+
+    public void startGame() {
+        gameField = new Field(cellSelector);
+        gameField.setEmptyField();
+        gameField.setDigitToRandomCell();
+        gameField.setDigitToRandomCell();
+        showInterface();
+    }
+
+    public Field getGameField(){
+        return gameField;
+    }
+
+    public void showInterface(){
+
+    }
+
+
 }

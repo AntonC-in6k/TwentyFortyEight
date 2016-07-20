@@ -14,7 +14,7 @@ public class LeftSlide extends Slide {
     @Override
     protected void moveInLine(int index) {
         for (int i = 1; i < 4; i++) {
-            if (field.get(index).get(i).getValue() != null) {
+            if (field.get(index).get(i).getValue() != 0) {
                 slideLine(index, i);
             }
         }
@@ -34,7 +34,7 @@ public class LeftSlide extends Slide {
     @Override
     protected void addInLine(int index) {
         for (int i = 1; i < 4; i++) {
-            if (field.get(index).get(i).getValue() != null) {
+            if (field.get(index).get(i).getValue() != 0) {
                 addDigits(index, i);
             }
         }

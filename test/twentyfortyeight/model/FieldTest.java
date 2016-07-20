@@ -1,61 +1,69 @@
 package twentyfortyeight.model;
 
-import org.junit.Before;
 import org.junit.Test;
-import sun.invoke.empty.Empty;
-
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Created by employee on 7/19/16.
  */
-public class FieldTest {
+public class FieldTest implements CellSelector,ValueGenerator {
 
     private List<Cell> testCells;
 
-    public void setTestCells(Field field){
-        testCells = new ArrayList<>(16);
-        testCells.addAll(field.getField().get(0));
-        testCells.addAll(field.getField().get(1));
-        testCells.addAll(field.getField().get(2));
-        testCells.addAll(field.getField().get(3));
+    @Override
+    public Cell selectEmptyCell(List<Cell> freeCells) {
+        Cell cell = freeCells.get(0);
+        return cell;
     }
+
+    @Override
+    public int setRandomValue() {
+        return 2;
+    }
+
+    private void Setup(List<List<Cell>> field){
+        testCells = new ArrayList<>(16);
+        testCells.addAll(field.get(0));
+        testCells.addAll(field.get(1));
+        testCells.addAll(field.get(2));
+        testCells.addAll(field.get(3));
+    }
+
     @Test
-    public void fieldISEmptyInTheBeginning() throws Exception {
-        Field field = new Field();
-        field.setEmptyField();
-        setTestCells(field);
-        int counter=0;
-        for (Cell cell:
-             testCells) {
-            if (!cell.getCellStatus()){
-                counter++;
-            }
-        }
-        assertThat(counter, is(0));
+    public void parseStringToCells() throws Exception {
+        Field field = new Field(this,
+                        "2, 0, 0, 0\n"+
+                        "0, 2, 0, 0\n"+
+                        "0, 0, 2, 0\n"+
+                        "0, 0, 0, 2\n");
+
+        assertThat(field.getField(),is(Arrays.asList(
+                Arrays.asList(new Cell(2), new Cell(), new Cell(), new Cell()),
+                Arrays.asList(new Cell(), new Cell(2), new Cell(), new Cell()),
+                Arrays.asList(new Cell(), new Cell(), new Cell(2), new Cell()),
+                Arrays.asList(new Cell(), new Cell(), new Cell(), new Cell(2)))));
+
     }
 
     @Test
     public void setRandomDigitToCell() throws Exception {
-        Field field = new Field();
-        field.setEmptyField();
-        field.setDigitToRandomCell();
-        setTestCells(field);
-        int counter=0;
-        for (Cell cell:
-                testCells) {
-            if (!cell.getCellStatus()){
-                counter++;
-            }
-        }
-        assertThat(counter, is(1));
+        Field field = new Field(this);
+        Setup(field.getField());
+
+        field.selectCell(testCells).setValue(setRandomValue());
+
+        assertThat(field.getField(),
+                is((new Field(this,
+                        "2, 0, 0, 0\n"+
+                        "0, 0, 0, 0\n"+
+                        "0, 0, 0, 0\n"+
+                        "0, 0, 0, 0\n").getField())));
     }
 
 

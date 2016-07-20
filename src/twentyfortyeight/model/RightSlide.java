@@ -14,7 +14,7 @@ public class RightSlide extends Slide {
     @Override
     protected void moveInLine(int index) {
         for (int i = 2; i >= 0; i--) {
-            if (field.get(index).get(i).getValue() != null) {
+            if (field.get(index).get(i).getValue() != 0) {
                 slideLine(index, i);
             }
         }
@@ -34,7 +34,7 @@ public class RightSlide extends Slide {
     @Override
     protected void addInLine(int index) {
         for (int i = 2; i >= 0; i--) {
-            if (field.get(index).get(i).getValue() != null) {
+            if (field.get(index).get(i).getValue() != 0) {
                 addDigits(index, i);
             }
         }
