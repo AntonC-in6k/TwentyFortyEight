@@ -12,39 +12,39 @@ public class UpSlide extends Slide {
     }
 
     @Override
-    protected void moveInLine(int index) {
-        for (int i = 1; i < 4; i++) {
-            if (field.get(i).get(index).getValue() != 0) {
-                slideLine(index, i);
+    protected void moveInLine(int row) {
+        for (int column = 1; column < 4; column++) {
+            if (field.get(column).get(row).getValue() != 0) {
+                slideLine(row, column);
             }
         }
     }
 
     @Override
-    protected void slideLine(int index, int i) {
-        for (int j = i - 1; j >= 0; j--) {
-            if (field.get(j).get(index).getCellStatus()) {
-                field.get(j).get(index).setValue(
-                        field.get(j+1).get(index).getValue());
-                field.get(j+1).get(index).resetValue();
+    protected void slideLine(int row, int currentColumn) {
+        for (int column = currentColumn - 1; column >= 0; column--) {
+            if (field.get(column).get(row).getCellStatus()) {
+                field.get(column).get(row).setValue(
+                        field.get(column+1).get(row).getValue());
+                field.get(column+1).get(row).resetValue();
             }
         }
     }
 
     @Override
-    protected void addInLine(int index) {
-        for (int i = 1; i < 4; i++) {
-            if (field.get(i).get(index).getValue() != 0) {
-                addDigits(index, i);
+    protected void addInLine(int row) {
+        for (int column = 1; column < 4; column++) {
+            if (field.get(column).get(row).getValue() != 0) {
+                addDigits(row, column);
             }
         }
     }
 
     @Override
-    protected void addDigits(int index, int i) {
-        if (field.get(i).get(index).getValue() ==
-                field.get(i-1).get(index).getValue()) {
-            addTwoNearDigits(index, i);
+    protected void addDigits(int row, int column) {
+        if (field.get(column).get(row).getValue() ==
+                field.get(column-1).get(row).getValue()) {
+            addTwoNearDigits(row, column);
         }
     }
 

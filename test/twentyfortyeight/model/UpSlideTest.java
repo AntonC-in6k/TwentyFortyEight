@@ -12,17 +12,11 @@ import static org.junit.Assert.assertThat;
  * Created by employee on 7/19/16.
  */
 public class UpSlideTest {
-    private CellSelector cellSelector;
     private UpSlide slide;
-
-    public void setup() {
-        cellSelector = new CellSelectorImpl();
-    }
 
     @Test
     public void pushDigitsToBorder() throws Exception {
-        setup();
-        Field field = new Field(cellSelector,
+        Field field = new Field(
                         "2, 0, 0, 0\n"+
                         "0, 2, 0, 0\n"+
                         "0, 0, 4, 0\n"+
@@ -32,7 +26,7 @@ public class UpSlideTest {
         slide.move();
 
         assertThat(slide.getField(),
-                is((new Field(cellSelector,
+                is((new Field(
                                 "2, 2, 4, 8\n" +
                                 "0, 0, 0, 0\n" +
                                 "0, 0, 0, 0\n" +
@@ -41,7 +35,7 @@ public class UpSlideTest {
 
     @Test
     public void tryAddTwoDigitsInLine() throws Exception {
-        Field field = new Field(cellSelector,
+        Field field = new Field(
                         "0, 0, 4, 2\n"+
                         "0, 0, 4, 2\n"+
                         "0, 0, 0, 0\n"+
@@ -51,7 +45,7 @@ public class UpSlideTest {
         slide.move();
 
         assertThat(slide.getField(),
-                is((new Field(cellSelector,
+                is((new Field(
                                 "0, 0, 8, 4\n" +
                                 "0, 0, 0, 0\n" +
                                 "0, 0, 0, 0\n" +
@@ -60,7 +54,7 @@ public class UpSlideTest {
 
     @Test
     public void pushDigitsToBorderAndAddThem() throws Exception {
-        Field field = new Field(cellSelector,
+        Field field = new Field(
                         "2, 4, 2, 2\n"+
                         "4, 4, 2, 4\n"+
                         "0, 4, 0, 0\n"+
@@ -70,7 +64,7 @@ public class UpSlideTest {
         slide.move();
 
         assertThat(slide.getField(),
-                is((new Field(cellSelector,
+                is((new Field(
                                 "2, 8, 4, 2\n" +
                                 "4, 8, 0, 8\n" +
                                 "0, 0, 0, 0\n" +

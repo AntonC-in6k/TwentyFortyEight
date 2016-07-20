@@ -12,39 +12,39 @@ public class RightSlide extends Slide {
     }
 
     @Override
-    protected void moveInLine(int index) {
-        for (int i = 2; i >= 0; i--) {
-            if (field.get(index).get(i).getValue() != 0) {
-                slideLine(index, i);
+    protected void moveInLine(int row) {
+        for (int column = 2; column >= 0; column--) {
+            if (field.get(row).get(column).getValue() != 0) {
+                slideLine(row, column);
             }
         }
     }
 
     @Override
-    protected void slideLine(int index, int i) {
-        for (int j = i + 1; j < 4; j++) {
-            if (field.get(index).get(j).getCellStatus()) {
-                field.get(index).get(j).setValue(
-                        field.get(index).get(j - 1).getValue());
-                field.get(index).get(j - 1).resetValue();
+    protected void slideLine(int row, int currentColumn) {
+        for (int column = currentColumn + 1; column < 4; column++) {
+            if (field.get(row).get(column).getCellStatus()) {
+                field.get(row).get(column).setValue(
+                        field.get(row).get(column - 1).getValue());
+                field.get(row).get(column - 1).resetValue();
             }
         }
     }
 
     @Override
-    protected void addInLine(int index) {
-        for (int i = 2; i >= 0; i--) {
-            if (field.get(index).get(i).getValue() != 0) {
-                addDigits(index, i);
+    protected void addInLine(int row) {
+        for (int column = 2; column >= 0; column--) {
+            if (field.get(row).get(column).getValue() != 0) {
+                addDigits(row, column);
             }
         }
     }
 
     @Override
-    protected void addDigits(int index, int i) {
-        if (field.get(index).get(i).getValue() ==
-                field.get(index).get(i + 1).getValue()) {
-            addTwoNearDigits(index, i);
+    protected void addDigits(int row, int column) {
+        if (field.get(row).get(column).getValue() ==
+                field.get(row).get(column + 1).getValue()) {
+            addTwoNearDigits(row, column);
         }
     }
 

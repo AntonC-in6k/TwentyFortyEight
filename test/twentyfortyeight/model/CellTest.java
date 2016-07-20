@@ -19,7 +19,7 @@ public class CellTest {
     @Test
     public void getRandomValue() throws Exception {
         Cell cell = new Cell();
-        cell.setRandomValue();
+        cell.setValue(cell.setRandomValue());
         assertThat(cell.getValue(), anyOf(is(2), is(4)));
     }
 
@@ -28,7 +28,7 @@ public class CellTest {
         Cell cell = new Cell();
         List<Integer> values = new ArrayList(100);
         for (int i = 0; i <= 100; i++) {
-            cell.setRandomValue();
+            cell.setValue(cell.setRandomValue());
             values.add(cell.getValue());
         }
         assertTrue(values.contains(4));
@@ -39,7 +39,7 @@ public class CellTest {
         Cell cell = new Cell();
         List<Integer> values = new ArrayList(100);
         for (int i = 0; i <= 100; i++) {
-            cell.setRandomValue();
+            cell.setValue(cell.setRandomValue());
             values.add(cell.getValue());
         }
         assertTrue(values.contains(2));

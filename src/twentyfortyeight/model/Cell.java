@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Created by employee on 7/19/16.
  */
-public class Cell implements ValueGenerator {
+public class Cell implements ValueGenerator  {
     private Integer value;
     private boolean cellEmpty;
 

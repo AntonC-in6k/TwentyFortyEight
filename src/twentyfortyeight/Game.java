@@ -10,18 +10,9 @@ import twentyfortyeight.model.Field;
 public class Game {
 
     private Field gameField;
-    private CellSelector cellSelector;
-
-    public Game(){
-        cellSelector = new CellSelectorImpl();
-    }
-
-    public Game(CellSelector cellSelector){
-        this.cellSelector = cellSelector;
-    }
 
     public void startGame() {
-        gameField = new Field(cellSelector);
+        gameField = new Field();
         gameField.setEmptyField();
         gameField.setDigitToRandomCell();
         gameField.setDigitToRandomCell();

@@ -1,5 +1,6 @@
 package twentyfortyeight.model;
 
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -18,7 +19,12 @@ public class FieldTest implements CellSelector,ValueGenerator {
 
     @Override
     public Cell selectEmptyCell(List<Cell> freeCells) {
-        Cell cell = freeCells.get(0);
+        Cell cell;
+        if (freeCells.get(0).getCellStatus()){
+            cell = freeCells.get(0);
+        } else {
+            cell = freeCells.get(1);
+        }
         return cell;
     }
 
@@ -37,7 +43,7 @@ public class FieldTest implements CellSelector,ValueGenerator {
 
     @Test
     public void parseStringToCells() throws Exception {
-        Field field = new Field(this,
+        Field field = new Field(
                         "2, 0, 0, 0\n"+
                         "0, 2, 0, 0\n"+
                         "0, 0, 2, 0\n"+
@@ -59,12 +65,26 @@ public class FieldTest implements CellSelector,ValueGenerator {
         field.selectCell(testCells).setValue(setRandomValue());
 
         assertThat(field.getField(),
-                is((new Field(this,
+                is((new Field(
                         "2, 0, 0, 0\n"+
                         "0, 0, 0, 0\n"+
                         "0, 0, 0, 0\n"+
                         "0, 0, 0, 0\n").getField())));
     }
 
+    @Test
+    public void gameStartTest() throws Exception {
+        Field field = new Field(this);
+        Setup(field.getField());
 
+        field.selectCell(testCells).setValue(setRandomValue());
+        field.selectCell(testCells).setValue(setRandomValue());
+
+        assertThat(field.getField(),
+                Matchers.is(new Field(this,
+                        "2, 2, 0, 0\n"+
+                        "0, 0, 0, 0\n"+
+                        "0, 0, 0, 0\n"+
+                        "0, 0, 0, 0\n").getField()));
+    }
 }

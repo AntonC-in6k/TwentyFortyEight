@@ -3,14 +3,20 @@ package twentyfortyeight.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by employee on 7/19/16.
  */
 public class Field {
+    public final static int FIELD_SIZE=4;
+
     private List<List<Cell>> field;
     private CellSelector cellSelector;
+
+    public Field(){
+        this.cellSelector = new CellSelectorImpl();
+        setEmptyField();
+    }
 
     public Field(CellSelector cellSelector) {
         this.cellSelector = cellSelector;
@@ -20,13 +26,13 @@ public class Field {
     public Field(CellSelector cellSelector,String field) {
         this.cellSelector = cellSelector;
         setEmptyField();
-        for (int i = 0; i < 4; i++) {
-            String row = field.split("\\n")[i];
-            for (int j = 0; j < 4; j++) {
-                this.field.get(i).set(j,
-                        new Cell(Integer.parseInt(row.split(",")[j].trim())));
-            }
-        }
+        parseToCells(field);
+    }
+
+    public Field(String field) {
+        this.cellSelector = new CellSelectorImpl();
+        setEmptyField();
+        parseToCells(field);
     }
 
     public List<List<Cell>> getField() {
@@ -52,14 +58,24 @@ public class Field {
 
     private List<Cell> foundEmptyCell() {
         List<Cell> result = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
+        for (int i = 0; i < FIELD_SIZE; i++) {
+            for (int j = 0; j < FIELD_SIZE; j++) {
                 if (field.get(i).get(j).getCellStatus()) {
                     result.add(field.get(i).get(j));
                 }
             }
         }
         return result;
+    }
+
+    private void parseToCells(String field){
+        for (int i = 0; i < FIELD_SIZE; i++) {
+            String row = field.split("\\n")[i];
+            for (int j = 0; j < FIELD_SIZE; j++) {
+                this.field.get(i).set(j,
+                        new Cell(Integer.parseInt(row.split(",")[j].trim())));
+            }
+        }
     }
 
 }
