@@ -11,61 +11,52 @@ import static org.junit.Assert.assertThat;
 public class RightSlideTest {
     private RightSlide slide;
 
+    private void compareFields(GameBoard gameBoard, String expected){
+        slide = new RightSlide(gameBoard.getField());
+        slide.apply();
+        assertThat(slide.getField(), is(new GameBoard(expected).getField()));
+    }
+
     @Test
     public void pushDigitsToBorder() throws Exception {
-        Field field = new Field(
-                        "2, 0, 0, 0\n"+
-                        "0, 2, 0, 0\n"+
-                        "0, 0, 4, 0\n"+
+        GameBoard gameBoard = new GameBoard(
+                        "2, 0, 0, 0\n" +
+                        "0, 2, 0, 0\n" +
+                        "0, 0, 4, 0\n" +
                         "0, 0, 0, 8\n");
-        slide = new RightSlide(field.getField());
-
-        slide.move();
-
-        assertThat(slide.getField(),
-                is((new Field(
+        compareFields(gameBoard,
                         "0, 0, 0, 2\n" +
                         "0, 0, 0, 2\n" +
                         "0, 0, 0, 4\n" +
-                        "0, 0, 0, 8\n").getField())));
+                        "0, 0, 0, 8\n");
     }
 
     @Test
     public void tryAddTwoDigitsInLine() throws Exception {
-        Field field = new Field(
-                        "0, 0, 2, 2\n"+
-                        "0, 0, 4, 4\n"+
-                        "0, 0, 2, 4\n"+
+        GameBoard gameBoard = new GameBoard(
+                        "0, 0, 2, 2\n" +
+                        "0, 0, 4, 4\n" +
+                        "0, 0, 2, 4\n" +
                         "0, 0, 0, 0\n");
-        slide = new RightSlide(field.getField());
-
-        slide.move();
-
-        assertThat(slide.getField(),
-                is((new Field(
-                        "0, 0, 0, 4\n"+
-                        "0, 0, 0, 8\n"+
-                        "0, 0, 2, 4\n"+
-                        "0, 0, 0, 0\n").getField())));
+        compareFields(gameBoard,
+                        "0, 0, 0, 4\n" +
+                        "0, 0, 0, 8\n" +
+                        "0, 0, 2, 4\n" +
+                        "0, 0, 0, 0\n");
     }
 
     @Test
     public void pushDigitsToBorderAndAddThem() throws Exception {
-        Field field = new Field(
-                        "2, 0, 2, 2\n"+
-                        "4, 4, 4, 4\n"+
-                        "0, 0, 0, 0\n"+
+        GameBoard gameBoard = new GameBoard(
+                        "2, 0, 2, 2\n" +
+                        "4, 4, 4, 4\n" +
+                        "0, 0, 0, 0\n" +
                         "0, 0, 0, 0\n");
-        slide = new RightSlide(field.getField());
-
-        slide.move();
-
-        assertThat(slide.getField(),
-                is((new Field(
-                        "0, 0, 2, 4\n"+
-                        "0, 0, 8, 8\n"+
-                        "0, 0, 0, 0\n"+
-                        "0, 0, 0, 0\n").getField())));
+        compareFields(gameBoard,
+                        "0, 0, 2, 4\n" +
+                        "0, 0, 8, 8\n" +
+                        "0, 0, 0, 0\n" +
+                        "0, 0, 0, 0\n");
     }
 
 }

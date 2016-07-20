@@ -52,5 +52,6 @@ public class LeftSlide extends Slide {
     protected void addTwoNearDigits(int row, int column) {
         field.get(row).get(column - 1).increaseValue();
         field.get(row).get(column).resetValue();
+        score += field.get(row).get(column - 1).getValue();
     }
 }

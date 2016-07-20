@@ -8,12 +8,14 @@ import java.util.List;
 public abstract class Slide {
 
     protected List<List<Cell>> field;
+    protected int score;
 
     public Slide(List<List<Cell>> field) {
         this.field = field;
+        score=0;
     }
 
-    public void move() {
+    public void apply() {
         for (int i = 0; i < 4; i++) {
             moveInLine(i);
             addInLine(i);

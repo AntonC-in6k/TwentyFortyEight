@@ -1,26 +1,24 @@
 package twentyfortyeight;
 
-import twentyfortyeight.model.CellSelector;
-import twentyfortyeight.model.CellSelectorImpl;
-import twentyfortyeight.model.Field;
+import twentyfortyeight.model.GameBoard;
 
 /**
  * Created by employee on 7/19/16.
  */
 public class Game {
 
-    private Field gameField;
+    private GameBoard gameGameBoard;
 
     public void startGame() {
-        gameField = new Field();
-        gameField.setEmptyField();
-        gameField.setDigitToRandomCell();
-        gameField.setDigitToRandomCell();
+        gameGameBoard = new GameBoard();
+        gameGameBoard.setEmptyField();
+        gameGameBoard.setDigitToRandomCell();
+        gameGameBoard.setDigitToRandomCell();
         showInterface();
     }
 
-    public Field getGameField(){
-        return gameField;
+    public GameBoard getGameGameBoard(){
+        return gameGameBoard;
     }
 
     public void showInterface(){

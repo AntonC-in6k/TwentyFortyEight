@@ -7,29 +7,29 @@ import java.util.List;
 /**
  * Created by employee on 7/19/16.
  */
-public class Field {
-    public final static int FIELD_SIZE=4;
+public class GameBoard {
+    public final static int FIELD_SIZE = 4;
 
     private List<List<Cell>> field;
     private CellSelector cellSelector;
 
-    public Field(){
+    public GameBoard() {
         this.cellSelector = new CellSelectorImpl();
         setEmptyField();
     }
 
-    public Field(CellSelector cellSelector) {
+    public GameBoard(CellSelector cellSelector) {
         this.cellSelector = cellSelector;
         setEmptyField();
     }
 
-    public Field(CellSelector cellSelector,String field) {
+    public GameBoard(CellSelector cellSelector, String field) {
         this.cellSelector = cellSelector;
         setEmptyField();
         parseToCells(field);
     }
 
-    public Field(String field) {
+    public GameBoard(String field) {
         this.cellSelector = new CellSelectorImpl();
         setEmptyField();
         parseToCells(field);
@@ -37,6 +37,10 @@ public class Field {
 
     public List<List<Cell>> getField() {
         return field;
+    }
+
+    public void setField(List<List<Cell>> field){
+        this.field=field;
     }
 
     public void setEmptyField() {
@@ -52,8 +56,8 @@ public class Field {
         cell.setValue(cell.setRandomValue());
     }
 
-    public Cell selectCell(List<Cell> cells){
-       return cellSelector.selectEmptyCell(cells);
+    public Cell selectCell(List<Cell> cells) {
+        return cellSelector.selectEmptyCell(cells);
     }
 
     private List<Cell> foundEmptyCell() {
@@ -68,7 +72,7 @@ public class Field {
         return result;
     }
 
-    private void parseToCells(String field){
+    private void parseToCells(String field) {
         for (int i = 0; i < FIELD_SIZE; i++) {
             String row = field.split("\\n")[i];
             for (int j = 0; j < FIELD_SIZE; j++) {

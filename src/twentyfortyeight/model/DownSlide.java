@@ -52,6 +52,7 @@ public class DownSlide extends Slide {
     protected void addTwoNearDigits(int row, int column) {
         field.get(column+1).get(row).increaseValue();
         field.get(column).get(row).resetValue();
+        score += field.get(column + 1).get(row).getValue();
     }
 
 }

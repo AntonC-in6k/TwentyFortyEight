@@ -1,7 +1,7 @@
 package twentyfortyeight.view;
 
 import twentyfortyeight.model.Cell;
-import twentyfortyeight.model.Field;
+import twentyfortyeight.model.GameBoard;
 
 import java.util.List;
 
@@ -10,15 +10,15 @@ import java.util.List;
  */
 public class GameFieldView {
 
-    public void show(Field field){
+    public void show(GameBoard gameBoard){
 
-        System.out.println(formatField(field));
+        System.out.println(formatField(gameBoard));
     }
 
-    private String formatField(Field field) {
+    private String formatField(GameBoard gameBoard) {
         String result="";
         for (int i=0;i<4;i++){
-            formatRow(field.getField().get(i));
+            formatRow(gameBoard.getField().get(i));
         }
         return result;
     }
